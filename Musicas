@@ -1,0 +1,81 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char musicas[10][50] = {
+        "Baby",
+        "Sorry",
+        "Love Yourself",
+        "Peaches",
+        "Ghost",
+        "What Do You Mean",
+        "Yummy",
+        "Intentions",
+        "Stay",
+        "Never Say Never"
+    };
+
+    int reproducoes[10] = {
+        1500, 3200, 850, 4700, 2100,
+        5600, 1200, 3900, 2800, 650
+    };
+
+    int temp;
+    char musicaTemp[50];
+
+    // Exibe as musicas originais.
+    printf("=== REPRODUCOES ORIGINAIS ===\n");
+
+    for (int i = 0; i < 10; i++) {
+        printf("%-20s %d reproducoes\n",
+               musicas[i], reproducoes[i]);
+    }
+
+    // Bubble Sort em ordem crescente.
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9 - i; j++) {
+            if (reproducoes[j] > reproducoes[j + 1]) {
+                temp = reproducoes[j];
+                reproducoes[j] = reproducoes[j + 1];
+                reproducoes[j + 1] = temp;
+
+                strcpy(musicaTemp, musicas[j]);
+                strcpy(musicas[j], musicas[j + 1]);
+                strcpy(musicas[j + 1], musicaTemp);
+            }
+        }
+    }
+
+    // Exibe as musicas em ordem crescente.
+    printf("\n=== ORDEM CRESCENTE ===\n");
+
+    for (int i = 0; i < 10; i++) {
+        printf("%-20s %d reproducoes\n",
+               musicas[i], reproducoes[i]);
+    }
+
+    // Bubble Sort em ordem decrescente.
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9 - i; j++) {
+            if (reproducoes[j] < reproducoes[j + 1]) {
+                temp = reproducoes[j];
+                reproducoes[j] = reproducoes[j + 1];
+                reproducoes[j + 1] = temp;
+
+                strcpy(musicaTemp, musicas[j]);
+                strcpy(musicas[j], musicas[j + 1]);
+                strcpy(musicas[j + 1], musicaTemp);
+            }
+        }
+    }
+
+    // Exibe as musicas em ordem decrescente.
+    printf("\n=== ORDEM DECRESCENTE ===\n");
+
+    for (int i = 0; i < 10; i++) {
+        printf("%-20s %d reproducoes\n",
+               musicas[i], reproducoes[i]);
+    }
+
+    return 0;
+}
